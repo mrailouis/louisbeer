@@ -4,36 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a0eda713-fadf-40ab-888f-d2dde1feac97" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/louiswebsite.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/next-prompt.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/about/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/aspirations/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/now/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/photography/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/projects/[slug]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/projects/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/reading/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/robots.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/sitemap.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/systems/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/updates/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/writing/[slug]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/writing/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CommitFeed.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ContributionGraph.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Footer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Nav.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/cn.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/content.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/github.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-    </list>
+    <list default="true" id="a0eda713-fadf-40ab-888f-d2dde1feac97" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -93,7 +64,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776866176537</updated>
-      <workItem from="1776866177550" duration="1930000" />
+      <workItem from="1776866177550" duration="2243000" />
     </task>
     <servers />
   </component>

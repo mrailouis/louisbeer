@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://louisbeer.net/</loc><priority>1.0</priority></url>
+  <url><loc>https://louisbeer.net/about/</loc><priority>0.8</priority></url>
+  <url><loc>https://louisbeer.net/projects/</loc><priority>0.8</priority></url>
+  <url><loc>https://louisbeer.net/projects/larpclient/</loc><priority>0.6</priority></url>
+  <url><loc>https://louisbeer.net/projects/peacemetrics/</loc><priority>0.6</priority></url>
+  <url><loc>https://louisbeer.net/projects/bazaar-tracker/</loc><priority>0.6</priority></url>
+  <url><loc>https://louisbeer.net/projects/systems-modelling-toolkit/</loc><priority>0.6</priority></url>
+  <url><loc>https://louisbeer.net/projects/conflict-pattern-analysis/</loc><priority>0.6</priority></url>
+  <url><loc>https://louisbeer.net/writing/</loc><priority>0.8</priority></url>
+  <url><loc>https://louisbeer.net/writing/incentives-over-intentions/</loc><priority>0.7</priority></url>
+  <url><loc>https://louisbeer.net/writing/modelling-conflict/</loc><priority>0.7</priority></url>
+  <url><loc>https://louisbeer.net/writing/systems-thinking-engineering/</loc><priority>0.7</priority></url>
+  <url><loc>https://louisbeer.net/writing/on-reverse-engineering/</loc><priority>0.7</priority></url>
+  <url><loc>https://louisbeer.net/writing/the-geopolitics-of-data/</loc><priority>0.7</priority></url>
+  <url><loc>https://louisbeer.net/updates/</loc><priority>0.7</priority></url>
+  <url><loc>https://louisbeer.net/aspirations/</loc><priority>0.7</priority></url>
+  <url><loc>https://louisbeer.net/now/</loc><priority>0.7</priority></url>
+  <url><loc>https://louisbeer.net/systems/</loc><priority>0.7</priority></url>
+  <url><loc>https://louisbeer.net/reading/</loc><priority>0.7</priority></url>
+  <url><loc>https://louisbeer.net/photography/</loc><priority>0.6</priority></url>
+</urlset>
+
