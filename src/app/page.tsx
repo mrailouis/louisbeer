@@ -3,6 +3,7 @@ import { ArrowRight, ExternalLink, GitBranch } from "lucide-react";
 import { projects, essays, updates } from "@/lib/content";
 import { getGithubActivity } from "@/lib/github";
 import { Section, SectionHeader, Tag, StatusBadge } from "@/components/ui";
+import { TechTag } from "@/components/TechTag";
 
 export default async function HomePage() {
   const activity = await getGithubActivity();
@@ -129,9 +130,7 @@ export default async function HomePage() {
               </div>
               <div className="flex flex-wrap gap-2 md:justify-end">
                 {project.stack.slice(0, 3).map((s) => (
-                  <Tag key={s} variant="muted">
-                    {s}
-                  </Tag>
+                  <TechTag key={s} name={s} />
                 ))}
               </div>
             </Link>

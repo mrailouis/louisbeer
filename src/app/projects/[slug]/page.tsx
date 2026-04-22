@@ -5,6 +5,7 @@ import { ArrowLeft, ExternalLink, GitBranch } from 'lucide-react'
 import { projects } from '@/lib/content'
 import { getRepoCommits } from '@/lib/github'
 import { Tag, StatusBadge, Callout, Section } from '@/components/ui'
+import { TechTag } from '@/components/TechTag'
 import { CommitFeed } from '@/components/CommitFeed'
 
 interface Props {
@@ -334,7 +335,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                 Stack
               </p>
               <div className="flex flex-wrap gap-2">
-                {project.stack.map((s) => <Tag key={s} variant="muted">{s}</Tag>)}
+                {project.stack.map((s) => <TechTag key={s} name={s} />)}
               </div>
             </div>
             <div className="border border-stone-200 p-6">

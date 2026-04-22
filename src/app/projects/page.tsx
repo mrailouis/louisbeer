@@ -3,7 +3,8 @@ import Link from 'next/link'
 import { ArrowRight, ExternalLink } from 'lucide-react'
 import { projects } from '@/lib/content'
 import { getContributionCalendar, getAllCommits } from '@/lib/github'
-import { Section, SectionHeader, Tag, StatusBadge } from '@/components/ui'
+import { Section, SectionHeader, StatusBadge } from '@/components/ui'
+import { TechTag } from '@/components/TechTag'
 import { ContributionGraph } from '@/components/ContributionGraph'
 import { CommitFeed } from '@/components/CommitFeed'
 
@@ -80,7 +81,7 @@ export default async function ProjectsPage() {
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {project.stack.map((s) => (
-                      <Tag key={s} variant="muted">{s}</Tag>
+                      <TechTag key={s} name={s} />
                     ))}
                   </div>
                 </div>
@@ -117,7 +118,7 @@ export default async function ProjectsPage() {
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {project.tags.slice(0, 3).map((t) => (
-                    <Tag key={t} variant="muted">{t}</Tag>
+                    <TechTag key={t} name={t} />
                   ))}
                 </div>
               </Link>
