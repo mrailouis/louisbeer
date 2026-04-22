@@ -20,13 +20,14 @@ export default async function HomePage() {
             Louis Beer
           </p>
           <h1 className="text-4xl md:text-5xl font-light text-stone-900 tracking-tight leading-tight mb-6">
-            Political economy,<br />
+            Ethical and political economy,<br />
             geopolitical systems,<br />
             and software engineering.
           </h1>
           <p className="text-lg text-stone-500 leading-relaxed max-w-2xl">
-            PPE student at the University of Southampton. I study political, economic, and
-            institutional systems — and build software implementations of those ideas.
+            Politics, Philosophy and Economics student at the University of Southampton.
+            I study political, economic, and institutional systems — and build software
+            implementations of those ideas.
           </p>
           <div className="flex flex-wrap gap-4 mt-10">
             <Link
@@ -53,20 +54,20 @@ export default async function HomePage() {
               Orientation
             </p>
             <p className="text-stone-600 leading-relaxed mb-4">
-              Philosophy, politics, and economics are not three separate subjects. They are
-              three analytical lenses on the same underlying problem: how do rational and
-              semi-rational actors behave within structured systems, and what emerges from
-              that behaviour at scale?
+              I believe that philosophy, politics, and economics are not three separate subjects.
+              They are analytical lenses on the same underlying problem: how do rational and
+              semi-rational actors behave within structured systems, and what emerges from that
+              behaviour at scale?
             </p>
             <p className="text-stone-600 leading-relaxed mb-4">
-              Software engineering, for me, is the natural extension of that inquiry. A
-              system described is a system partially understood. A system implemented is a
-              system tested against reality.
+              Software engineering, for me, began as a hobby — but as I developed it became
+              a natural extension of that inquiry. A system described is a system only partially
+              understood. A system implemented is a system tested against reality.
             </p>
             <p className="text-stone-600 leading-relaxed">
-              My work sits at this intersection — from modelling geopolitical risk to
-              reverse engineering complex software systems, from writing analytically about
-              institutions to building the tools to analyse them directly.
+              My work sits at this intersection — from modelling geopolitical risk to reverse
+              engineering complex software systems, from writing analytically about institutions
+              to building the tools to analyse them directly.
             </p>
           </div>
           <div className="space-y-6">
@@ -77,19 +78,15 @@ export default async function HomePage() {
               <ul className="space-y-2 text-sm text-stone-600">
                 <li className="flex gap-2">
                   <span className="text-slate-400 mt-0.5">—</span>
-                  Peacemetrics stability index v2
+                  Overall stability index
                 </li>
                 <li className="flex gap-2">
                   <span className="text-slate-400 mt-0.5">—</span>
-                  Conflict precondition pattern analysis
+                  Conflict pre-condition pattern analysis
                 </li>
                 <li className="flex gap-2">
                   <span className="text-slate-400 mt-0.5">—</span>
-                  LarpClient rendering pipeline
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-slate-400 mt-0.5">—</span>
-                  Writing: incentives and institutional failure
+                  Vulcan and OpenGL rendering
                 </li>
               </ul>
             </div>

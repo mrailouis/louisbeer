@@ -76,7 +76,7 @@ export const projects: Project[] = [
     stack: ['Kotlin', 'Java', 'GLSL', 'Mixin', 'Gradle', 'Node.js', 'LWJGL'],
     tags: ['systems', 'reverse-engineering', 'jvm', 'rendering', 'authentication'],
     featured: true,
-    status: 'active',
+    status: 'archived',
     year: 2024,
   },
   {
@@ -106,7 +106,7 @@ export const projects: Project[] = [
     stack: ['Node.js', 'TypeScript', 'PostgreSQL', 'Discord.js', 'Next.js', 'Chart.js'],
     tags: ['economics', 'market-systems', 'data', 'prediction', 'discord'],
     featured: true,
-    status: 'active',
+    status: 'archived',
     year: 2022,
   },
   {
