@@ -378,11 +378,11 @@ export default async function EssayPage({ params }: Props) {
           <span>{essay.readingTime}</span>
         </div>
 
-        <div className="prose-like space-y-5">
+        <div className="prose-like space-y-5 font-serif">
           {sections.map((block, i) => {
             if (block.startsWith('## ')) {
               return (
-                <h2 key={i} className="text-base font-medium text-stone-800 mt-10 mb-2">
+                <h2 key={i} className="text-base font-semibold font-sans text-stone-800 mt-10 mb-2 tracking-tight">
                   {block.replace('## ', '')}
                 </h2>
               )
@@ -395,7 +395,7 @@ export default async function EssayPage({ params }: Props) {
               )
             }
             return (
-              <p key={i} className="text-stone-600 leading-relaxed text-[0.95rem]">
+              <p key={i} className="text-stone-700 leading-[1.85] text-[1rem]">
                 {renderInline(block)}
               </p>
             )

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Lora } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
@@ -7,6 +7,12 @@ import { Footer } from "@/components/Footer";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
+});
+
+const lora = Lora({
+  subsets: ["latin"],
+  variable: "--font-serif",
   display: "swap",
 });
 
@@ -44,7 +50,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${inter.variable} ${lora.variable}`}>
+      <head>
+        {/* Cloudflare Web Analytics */}
+        <script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "your-token-here"}'
+        />
+      </head>
       <body className="min-h-screen flex flex-col font-sans antialiased">
         <Nav />
         <main className="flex-1 pt-14">{children}</main>

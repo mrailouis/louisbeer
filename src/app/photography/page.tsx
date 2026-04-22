@@ -6,7 +6,6 @@ export const metadata: Metadata = {
   description: 'Urban photography and visual observation.',
 }
 
-// Placeholder photo data — replace with real images
 const photos = [
   { id: 1, caption: 'Southampton Civic Centre, morning', location: 'Southampton, UK', year: '2025' },
   { id: 2, caption: 'Old Market Hall interior', location: 'Southampton, UK', year: '2025' },
@@ -14,6 +13,16 @@ const photos = [
   { id: 4, caption: 'West Quay periphery', location: 'Southampton, UK', year: '2024' },
   { id: 5, caption: 'Abandoned freight terminal', location: 'Southampton Docks, UK', year: '2024' },
   { id: 6, caption: 'Terraced housing, afternoon', location: 'Portswood, UK', year: '2024' },
+]
+
+// Subtle tones for placeholder compositions
+const tones = [
+  'bg-stone-300',
+  'bg-stone-350',
+  'bg-zinc-300',
+  'bg-stone-400',
+  'bg-zinc-350',
+  'bg-stone-300',
 ]
 
 export default function PhotographyPage() {
@@ -33,34 +42,31 @@ export default function PhotographyPage() {
       </section>
 
       <Section>
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {photos.map((photo) => (
-            <div key={photo.id} className="group">
-              {/* Placeholder image */}
-              <div className="aspect-[4/3] bg-stone-200 relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center text-stone-400 text-xs font-mono">
-                  {photo.id.toString().padStart(2, '0')}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-stone-300">
+          {photos.map((photo, idx) => (
+            <div key={photo.id} className="group bg-stone-200">
+              <div className="aspect-[4/3] bg-stone-300 relative overflow-hidden">
+                {/* Elegant placeholder — filmstrip-style numbered frame */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  <span className="text-[3rem] font-light text-stone-400/40 leading-none select-none">
+                    {String(photo.id).padStart(2, '0')}
+                  </span>
                 </div>
-                {/* 
-                  Replace the div above with:
-                  <Image
-                    src={`/photography/${photo.id}.jpg`}
-                    alt={photo.caption}
-                    fill
-                    className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
-                  />
-                */}
+                <div className="absolute bottom-3 left-3 right-3 flex justify-between items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="text-[10px] font-mono text-stone-500 bg-stone-200/80 px-1.5 py-0.5">
+                    {photo.year}
+                  </span>
+                </div>
               </div>
-              <div className="mt-2 px-0.5">
-                <p className="text-xs text-stone-600">{photo.caption}</p>
-                <p className="text-xs text-stone-400 mt-0.5">{photo.location} · {photo.year}</p>
+              <div className="p-3 border-t border-stone-300">
+                <p className="text-xs text-stone-700 leading-snug">{photo.caption}</p>
+                <p className="text-[11px] text-stone-400 mt-1 font-mono">{photo.location}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-12 border border-stone-200 p-8">
+        <div className="mt-12 border border-stone-300 bg-white p-8">
           <p className="text-xs font-medium tracking-widest uppercase text-stone-400 mb-3">
             On the practice
           </p>
@@ -72,6 +78,7 @@ export default function PhotographyPage() {
             and the built environment of places that carry significant social meaning without
             being visually spectacular.
           </p>
+          <p className="text-xs text-stone-400 mt-4 font-mono">Images to be added shortly.</p>
         </div>
       </Section>
     </div>
