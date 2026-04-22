@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import { Search } from 'lucide-react'
 import { Tag } from '@/components/ui'
@@ -17,60 +17,30 @@ interface Props {
   items: SearchItem[]
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type FlexDoc = any
+function scoreItem(item: SearchItem, q: string): number {
+  const lower = q.toLowerCase()
+  const tokens = lower.split(/\s+/).filter(Boolean)
+  let score = 0
+  for (const token of tokens) {
+    if (item.title.toLowerCase().includes(token)) score += 3
+    if (item.summary.toLowerCase().includes(token)) score += 1
+    if (item.tags.some((t) => t.toLowerCase().includes(token))) score += 2
+  }
+  return score
+}
 
 export function SearchClient({ items }: Props) {
   const [query, setQuery] = useState('')
-  const [results, setResults] = useState<SearchItem[]>([])
-  const indexRef = useRef<FlexDoc>(null)
 
-  useEffect(() => {
-    // Dynamically import flexsearch so it never runs during SSR/static generation
-    import('flexsearch').then(({ Document }) => {
-      const index = new Document({
-        document: {
-          id: 'slug',
-          index: ['title', 'summary', 'tags'],
-          store: true,
-        },
-        tokenize: 'forward',
-      })
-      items.forEach((item) =>
-        index.add({ ...item, tags: item.tags.join(' ') })
-      )
-      indexRef.current = index
-    }).catch(console.error)
-  }, [items])
-
-  useEffect(() => {
-    if (!query.trim() || !indexRef.current) {
-      setResults([])
-      return
-    }
-    try {
-      const raw = indexRef.current.search(query, { enrich: true, limit: 12 }) as Array<{ result: Array<{ doc: SearchItem }> }>
-      const seen = new Set<string>()
-      const found: SearchItem[] = []
-      if (Array.isArray(raw)) {
-        for (const field of raw) {
-          if (field?.result) {
-            for (const result of field.result) {
-              const doc = result.doc
-              if (doc && !seen.has(doc.slug)) {
-                seen.add(doc.slug)
-                found.push(doc)
-              }
-            }
-          }
-        }
-      }
-      setResults(found)
-    } catch (err) {
-      console.error('Search error:', err)
-      setResults([])
-    }
-  }, [query])
+  const results = useMemo(() => {
+    const q = query.trim()
+    if (!q) return []
+    return items
+      .map((item) => ({ item, score: scoreItem(item, q) }))
+      .filter(({ score }) => score > 0)
+      .sort((a, b) => b.score - a.score)
+      .map(({ item }) => item)
+  }, [query, items])
 
   const href = (item: SearchItem) =>
     item.type === 'essay' ? `/writing/${item.slug}` : `/projects/${item.slug}`
@@ -95,7 +65,7 @@ export function SearchClient({ items }: Props) {
 
       {/* Results */}
       {query.trim() && results.length === 0 && (
-        <p className="text-sm text-stone-400">No results for <span className="font-mono">"{query}"</span></p>
+        <p className="text-sm text-stone-400">No results for <span className="font-mono">&ldquo;{query}&rdquo;</span></p>
       )}
 
       {!query.trim() && (
@@ -133,8 +103,5 @@ export function SearchClient({ items }: Props) {
     </div>
   )
 }
-
-
-
 
 
