@@ -19,27 +19,30 @@ export function Nav() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
 
+  const isActive = (href: string) =>
+    pathname === href || pathname.startsWith(href + '/')
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-stone-50/90 backdrop-blur-sm border-b border-stone-200">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-stone-900 border-b border-stone-700">
       <nav className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
         <Link
           href="/"
-          className="text-sm font-medium tracking-wide text-stone-800 hover:text-stone-600 transition-colors"
+          className="text-sm font-medium tracking-wide text-white hover:text-stone-300 transition-colors"
         >
           Louis Beer
         </Link>
 
         {/* Desktop nav */}
-        <ul className="hidden md:flex items-center gap-7">
+        <ul className="hidden md:flex items-center gap-1">
           {navLinks.map(({ href, label }) => (
             <li key={href}>
               <Link
                 href={href}
                 className={cn(
-                  'text-sm transition-colors',
-                  pathname === href || pathname.startsWith(href + '/')
-                    ? 'text-stone-800 font-medium'
-                    : 'text-stone-500 hover:text-stone-800'
+                  'text-sm px-3 py-1.5 rounded transition-colors',
+                  isActive(href)
+                    ? 'text-white bg-stone-700'
+                    : 'text-stone-400 hover:text-white hover:bg-stone-800'
                 )}
               >
                 {label}
@@ -50,7 +53,7 @@ export function Nav() {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden text-stone-600 hover:text-stone-800 transition-colors"
+          className="md:hidden text-stone-400 hover:text-white transition-colors"
           onClick={() => setOpen((o) => !o)}
           aria-label="Toggle menu"
         >
@@ -60,18 +63,18 @@ export function Nav() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden border-t border-stone-200 bg-stone-50 px-6 py-4">
-          <ul className="flex flex-col gap-4">
+        <div className="md:hidden border-t border-stone-700 bg-stone-900 px-6 py-4">
+          <ul className="flex flex-col gap-1">
             {navLinks.map(({ href, label }) => (
               <li key={href}>
                 <Link
                   href={href}
                   onClick={() => setOpen(false)}
                   className={cn(
-                    'text-sm transition-colors',
-                    pathname === href
-                      ? 'text-stone-800 font-medium'
-                      : 'text-stone-500 hover:text-stone-800'
+                    'block text-sm px-3 py-2 rounded transition-colors',
+                    isActive(href)
+                      ? 'text-white bg-stone-700'
+                      : 'text-stone-400 hover:text-white hover:bg-stone-800'
                   )}
                 >
                   {label}
@@ -84,4 +87,3 @@ export function Nav() {
     </header>
   )
 }
-

@@ -12,14 +12,14 @@
   }
 
   body {
-    @apply bg-stone-50 text-stone-800;
+    @apply bg-stone-100 text-stone-800;
   }
 
   ::selection {
-    @apply bg-stone-800 text-stone-50;
+    @apply bg-slate-800 text-stone-50;
   }
 
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-stone-800 rounded-sm;
+    @apply outline-2 outline-offset-2 outline-slate-700 rounded-sm;
   }
 }

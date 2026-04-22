@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/src/app/globals.css">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/app/globals.css" />
+              <option name="originalContent" value="@import &quot;tailwindcss&quot;;&#10;&#10;@layer base {&#10;  html {&#10;    -webkit-font-smoothing: antialiased;&#10;    -moz-osx-font-smoothing: grayscale;&#10;    text-rendering: optimizeLegibility;&#10;  }&#10;&#10;  * {&#10;    box-sizing: border-box;&#10;  }&#10;&#10;  body {&#10;    @apply bg-stone-50 text-stone-800;&#10;  }&#10;&#10;  ::selection {&#10;    @apply bg-stone-800 text-stone-50;&#10;  }&#10;&#10;  :focus-visible {&#10;    @apply outline-2 outline-offset-2 outline-stone-800 rounded-sm;&#10;  }&#10;}&#10;" />
+              <option name="updatedContent" value="@import &quot;tailwindcss&quot;;&#10;&#10;@layer base {&#10;  html {&#10;    -webkit-font-smoothing: antialiased;&#10;    -moz-osx-font-smoothing: grayscale;&#10;    text-rendering: optimizeLegibility;&#10;  }&#10;&#10;  * {&#10;    box-sizing: border-box;&#10;  }&#10;&#10;  body {&#10;    @apply bg-stone-100 text-stone-800;&#10;  }&#10;&#10;  ::selection {&#10;    @apply bg-slate-800 text-stone-50;&#10;  }&#10;&#10;  :focus-visible {&#10;    @apply outline-2 outline-offset-2 outline-slate-700 rounded-sm;&#10;  }&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
