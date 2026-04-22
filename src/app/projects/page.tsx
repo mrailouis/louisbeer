@@ -15,7 +15,6 @@ export const metadata: Metadata = {
 
 export default async function ProjectsPage() {
   const featured = projects.filter((p) => p.featured)
-  const others = projects.filter((p) => !p.featured)
 
   const [calendar, commits] = await Promise.all([
     getContributionCalendar(),
@@ -26,14 +25,14 @@ export default async function ProjectsPage() {
     <div className="max-w-6xl mx-auto px-6">
 
       {/* ─── Header ─────────────────────────────────────────────── */}
-      <section className="pt-20 pb-12 border-b border-stone-200">
+      <section className="pt-20 pb-12 border-b border-stone-200 dark:border-stone-700">
         <p className="text-xs font-medium tracking-widest uppercase text-stone-400 mb-4">
           Projects
         </p>
-        <h1 className="text-3xl md:text-4xl font-light text-stone-800 tracking-tight max-w-2xl">
+        <h1 className="text-3xl md:text-4xl font-light text-stone-800 dark:text-stone-100 tracking-tight max-w-2xl">
           Systems built. Problems investigated.
         </h1>
-        <p className="mt-4 text-stone-500 max-w-xl leading-relaxed">
+        <p className="mt-4 text-stone-500 dark:text-stone-400 max-w-xl leading-relaxed">
           Each project is an attempt to move from reasoning about a system to building something
           that interacts with it. The problems are chosen because they are hard, not because they
           are safe.
@@ -43,7 +42,7 @@ export default async function ProjectsPage() {
             href="https://github.com/mrailouis"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs text-stone-400 hover:text-stone-700 transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 transition-colors"
           >
             github.com/mrailouis <ExternalLink size={11} />
           </Link>
@@ -52,31 +51,31 @@ export default async function ProjectsPage() {
 
       {/* ─── Contribution Graph ──────────────────────────────────── */}
       <Section>
-        <div className="border border-stone-200 p-6 md:p-8">
+        <div className="border border-stone-200 dark:border-stone-700 p-6 md:p-8 bg-white dark:bg-stone-900">
           <ContributionGraph calendar={calendar} />
         </div>
       </Section>
 
       {/* ─── Featured Projects ───────────────────────────────────── */}
-      <Section className="border-t border-stone-200">
+      <Section className="border-t border-stone-200 dark:border-stone-700">
         <SectionHeader label="Featured" title="Core Projects" />
         <div className="space-y-4">
           {featured.map((project) => (
             <Link
               key={project.slug}
               href={`/projects/${project.slug}`}
-              className="group block border border-stone-200 p-7 hover:border-stone-400 transition-colors"
+              className="group block border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-900 p-7 hover:border-stone-400 dark:hover:border-stone-500 transition-colors"
             >
               <div className="flex flex-col md:flex-row md:items-start gap-6">
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-3 mb-3">
-                    <h2 className="text-base font-medium text-stone-800 group-hover:text-stone-600 transition-colors">
+                    <h2 className="text-base font-medium text-stone-800 dark:text-stone-100 group-hover:text-stone-600 dark:group-hover:text-stone-300 transition-colors">
                       {project.title}
                     </h2>
                     <StatusBadge status={project.status} />
                     <span className="text-xs text-stone-400 font-mono">{project.year}</span>
                   </div>
-                  <p className="text-sm text-stone-600 leading-relaxed mb-4 max-w-2xl">
+                  <p className="text-sm text-stone-600 dark:text-stone-400 leading-relaxed mb-4 max-w-2xl">
                     {project.summary}
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -86,7 +85,7 @@ export default async function ProjectsPage() {
                   </div>
                 </div>
                 <div className="shrink-0">
-                  <span className="inline-flex items-center gap-1.5 text-sm text-stone-400 group-hover:text-stone-700 transition-colors">
+                  <span className="inline-flex items-center gap-1.5 text-sm text-stone-400 group-hover:text-stone-700 dark:group-hover:text-stone-200 transition-colors">
                     View project <ArrowRight size={14} />
                   </span>
                 </div>
@@ -96,39 +95,8 @@ export default async function ProjectsPage() {
         </div>
       </Section>
 
-      {/* ─── Other Projects ──────────────────────────────────────── */}
-      {others.length > 0 && (
-        <Section className="border-t border-stone-200">
-          <SectionHeader label="Also" title="Other Work" />
-          <div className="space-y-px">
-            {others.map((project) => (
-              <Link
-                key={project.slug}
-                href={`/projects/${project.slug}`}
-                className="group flex flex-col md:flex-row md:items-center justify-between gap-4 py-5 border-b border-stone-200 hover:border-stone-400 transition-colors"
-              >
-                <div>
-                  <div className="flex items-center gap-3 mb-1">
-                    <h3 className="text-sm font-medium text-stone-800 group-hover:text-stone-600 transition-colors">
-                      {project.title}
-                    </h3>
-                    <StatusBadge status={project.status} />
-                  </div>
-                  <p className="text-sm text-stone-500">{project.summary.split('.')[0]}.</p>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.slice(0, 3).map((t) => (
-                    <TechTag key={t} name={t} />
-                  ))}
-                </div>
-              </Link>
-            ))}
-          </div>
-        </Section>
-      )}
-
       {/* ─── All Commits Feed ────────────────────────────────────── */}
-      <Section className="border-t border-stone-200">
+      <Section className="border-t border-stone-200 dark:border-stone-700">
         <div className="grid md:grid-cols-3 gap-12">
           <div className="md:col-span-2">
             <SectionHeader
@@ -146,24 +114,25 @@ export default async function ProjectsPage() {
             </p>
             <div className="space-y-3">
               {['peacemetrics', 'bazaar-tracker', 'larpclient', 'louisbeer'].map((repo) => {
-                const count = commits.filter((c) => c.repo === repo).length
+                const count = commits.filter((c) => c.repo === repo && !c.sha.startsWith('fallback')).length
+                if (count === 0) return null
                 const linked = projects.find(
                   (p) =>
                     p.slug === repo ||
                     p.slug.replace('-', '') === repo.replace('-', '')
                 )
                 return (
-                  <div key={repo} className="flex items-center justify-between py-3 border-b border-stone-200">
+                  <div key={repo} className="flex items-center justify-between py-3 border-b border-stone-200 dark:border-stone-700">
                     <div>
                       {linked ? (
                         <Link
                           href={`/projects/${linked.slug}`}
-                          className="text-sm text-stone-700 hover:text-stone-500 transition-colors font-mono"
+                          className="text-sm text-stone-700 dark:text-stone-300 hover:text-stone-500 dark:hover:text-stone-100 transition-colors font-mono"
                         >
                           {repo}
                         </Link>
                       ) : (
-                        <span className="text-sm text-stone-700 font-mono">{repo}</span>
+                        <span className="text-sm text-stone-700 dark:text-stone-300 font-mono">{repo}</span>
                       )}
                     </div>
                     <span className="text-xs text-stone-400 font-mono">
@@ -174,12 +143,12 @@ export default async function ProjectsPage() {
               })}
             </div>
 
-            <div className="mt-6 pt-6 border-t border-stone-200">
+            <div className="mt-6 pt-6 border-t border-stone-200 dark:border-stone-700">
               <Link
                 href="https://github.com/mrailouis"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm text-stone-500 hover:text-stone-800 transition-colors"
+                className="inline-flex items-center gap-1.5 text-sm text-stone-500 dark:text-stone-400 hover:text-stone-800 dark:hover:text-white transition-colors"
               >
                 View all on GitHub <ExternalLink size={12} />
               </Link>
@@ -190,4 +159,3 @@ export default async function ProjectsPage() {
     </div>
   )
 }
-

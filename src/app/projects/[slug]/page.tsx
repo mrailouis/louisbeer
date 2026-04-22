@@ -213,22 +213,22 @@ export default async function ProjectDetailPage({ params }: Props) {
       <div className="pt-12 pb-6">
         <Link
           href="/projects"
-          className="inline-flex items-center gap-2 text-sm text-stone-400 hover:text-stone-700 transition-colors"
+          className="inline-flex items-center gap-2 text-sm text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 transition-colors"
         >
           <ArrowLeft size={14} /> Projects
         </Link>
       </div>
 
       {/* Header */}
-      <section className="pb-12 border-b border-stone-200">
+      <section className="pb-12 border-b border-stone-200 dark:border-stone-700">
         <div className="flex flex-wrap items-center gap-3 mb-4">
           <StatusBadge status={project.status} />
           <span className="text-xs text-stone-400 font-mono">{project.year}</span>
         </div>
-        <h1 className="text-3xl md:text-4xl font-light text-stone-800 tracking-tight mb-4">
+        <h1 className="text-3xl md:text-4xl font-light text-stone-800 dark:text-stone-100 tracking-tight mb-4">
           {project.title}
         </h1>
-        <p className="text-stone-500 leading-relaxed max-w-2xl">{project.summary}</p>
+        <p className="text-stone-500 dark:text-stone-400 leading-relaxed max-w-2xl">{project.summary}</p>
         <div className="flex flex-wrap gap-2 mt-6">
           {project.stack.map((s) => <Tag key={s}>{s}</Tag>)}
         </div>
@@ -238,7 +238,7 @@ export default async function ProjectDetailPage({ params }: Props) {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-stone-500 hover:text-stone-800 transition-colors"
+              className="inline-flex items-center gap-2 text-sm text-stone-500 dark:text-stone-400 hover:text-stone-800 dark:hover:text-white transition-colors"
             >
               <GitBranch size={14} /> Repository
             </a>
@@ -248,7 +248,7 @@ export default async function ProjectDetailPage({ params }: Props) {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-stone-500 hover:text-stone-800 transition-colors"
+              className="inline-flex items-center gap-2 text-sm text-stone-500 dark:text-stone-400 hover:text-stone-800 dark:hover:text-white transition-colors"
             >
               <ExternalLink size={14} /> Live
             </a>
@@ -265,7 +265,7 @@ export default async function ProjectDetailPage({ params }: Props) {
               <p className="text-xs font-medium tracking-widest uppercase text-stone-400 mb-4">
                 Problem
               </p>
-              <p className="text-stone-600 leading-relaxed">{project.problem}</p>
+              <p className="text-stone-600 dark:text-stone-300 leading-relaxed">{project.problem}</p>
             </div>
 
             {/* What it does */}
@@ -273,7 +273,7 @@ export default async function ProjectDetailPage({ params }: Props) {
               <p className="text-xs font-medium tracking-widest uppercase text-stone-400 mb-4">
                 What it does
               </p>
-              <p className="text-stone-600 leading-relaxed">{project.what}</p>
+              <p className="text-stone-600 dark:text-stone-300 leading-relaxed">{project.what}</p>
             </div>
 
             {/* Architecture */}
@@ -282,7 +282,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                 <p className="text-xs font-medium tracking-widest uppercase text-stone-400 mb-4">
                   Architecture
                 </p>
-                <p className="text-stone-600 leading-relaxed whitespace-pre-line">
+                <p className="text-stone-600 dark:text-stone-300 leading-relaxed whitespace-pre-line">
                   {content.architecture.trim()}
                 </p>
               </div>
@@ -296,8 +296,8 @@ export default async function ProjectDetailPage({ params }: Props) {
                 </p>
                 <ul className="space-y-2">
                   {content.technicalBreakdown.map((item, i) => (
-                    <li key={i} className="flex gap-3 text-sm text-stone-600">
-                      <span className="text-stone-300 mt-0.5 shrink-0">—</span>
+                    <li key={i} className="flex gap-3 text-sm text-stone-600 dark:text-stone-300">
+                      <span className="text-stone-300 dark:text-stone-600 mt-0.5 shrink-0">—</span>
                       {item}
                     </li>
                   ))}
@@ -311,7 +311,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                 <p className="text-xs font-medium tracking-widest uppercase text-stone-400 mb-4">
                   Challenges &amp; constraints
                 </p>
-                <p className="text-stone-600 leading-relaxed whitespace-pre-line">
+                <p className="text-stone-600 dark:text-stone-300 leading-relaxed whitespace-pre-line">
                   {content.challenges.trim()}
                 </p>
               </div>
@@ -330,7 +330,7 @@ export default async function ProjectDetailPage({ params }: Props) {
 
           {/* Sidebar */}
           <div className="space-y-6">
-            <div className="border border-stone-200 p-6">
+            <div className="border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-900 p-6">
               <p className="text-xs font-medium tracking-widest uppercase text-stone-400 mb-4">
                 Stack
               </p>
@@ -338,12 +338,12 @@ export default async function ProjectDetailPage({ params }: Props) {
                 {project.stack.map((s) => <TechTag key={s} name={s} />)}
               </div>
             </div>
-            <div className="border border-stone-200 p-6">
+            <div className="border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-900 p-6">
               <p className="text-xs font-medium tracking-widest uppercase text-stone-400 mb-4">
                 Tags
               </p>
               <div className="flex flex-wrap gap-2">
-                {project.tags.map((t) => <Tag key={t} variant="muted">{t}</Tag>)}
+                {project.tags.map((t) => <Tag key={t} variant="muted">{t.charAt(0).toUpperCase() + t.slice(1).replace(/-/g, ' ')}</Tag>)}
               </div>
             </div>
           </div>
@@ -352,17 +352,17 @@ export default async function ProjectDetailPage({ params }: Props) {
 
       {/* ─── Commit History ───────────────────────────────────────── */}
       {commits.length > 0 && (
-        <Section className="border-t border-stone-200">
+        <Section className="border-t border-stone-200 dark:border-stone-700">
           <div className="grid md:grid-cols-3 gap-12">
             <div className="md:col-span-2">
               <div className="mb-8">
                 <p className="text-xs font-medium tracking-widest uppercase text-stone-400 mb-2">
                   Commit history
                 </p>
-                <h2 className="text-xl font-light text-stone-800">
+                <h2 className="text-xl font-light text-stone-800 dark:text-stone-100">
                   {project.title} — {commits.length} commits
                 </h2>
-                <p className="text-sm text-stone-500 mt-1">
+                <p className="text-sm text-stone-500 dark:text-stone-400 mt-1">
                   Full commit log for this repository, most recent first.
                 </p>
               </div>
@@ -370,21 +370,21 @@ export default async function ProjectDetailPage({ params }: Props) {
             </div>
 
             <div>
-              <div className="border border-stone-200 p-6 sticky top-20">
+              <div className="border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-900 p-6 sticky top-20">
                 <p className="text-xs font-medium tracking-widest uppercase text-stone-400 mb-4">
                   Repository
                 </p>
-                <p className="text-sm font-mono text-stone-700 mb-4">
+                <p className="text-sm font-mono text-stone-700 dark:text-stone-300 mb-4">
                   mrailouis/{repoName}
                 </p>
                 <dl className="space-y-3 text-xs">
                   <div>
                     <dt className="text-stone-400">Commits shown</dt>
-                    <dd className="text-stone-600 font-mono mt-0.5">{commits.length}</dd>
+                    <dd className="text-stone-600 dark:text-stone-300 font-mono mt-0.5">{commits.length}</dd>
                   </div>
                   <div>
                     <dt className="text-stone-400">Most recent</dt>
-                    <dd className="text-stone-600 font-mono mt-0.5">
+                    <dd className="text-stone-600 dark:text-stone-300 font-mono mt-0.5">
                       {commits[0]?.date
                         ? new Date(commits[0].date).toLocaleDateString('en-GB', {
                             day: 'numeric', month: 'short', year: 'numeric',
@@ -394,7 +394,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                   </div>
                   <div>
                     <dt className="text-stone-400">Oldest shown</dt>
-                    <dd className="text-stone-600 font-mono mt-0.5">
+                    <dd className="text-stone-600 dark:text-stone-300 font-mono mt-0.5">
                       {commits[commits.length - 1]?.date
                         ? new Date(commits[commits.length - 1].date).toLocaleDateString('en-GB', {
                             day: 'numeric', month: 'short', year: 'numeric',
@@ -408,7 +408,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                     href={`${project.github}/commits`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs text-stone-400 hover:text-stone-700 transition-colors mt-5"
+                    className="inline-flex items-center gap-1.5 text-xs text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 transition-colors mt-5"
                   >
                     Full history on GitHub <ExternalLink size={10} />
                   </a>

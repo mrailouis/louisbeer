@@ -6,6 +6,8 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import { getAllEssayMeta, getEssayMeta, getEssayContent } from '@/lib/mdx'
 import { Tag } from '@/components/ui'
 
+const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1).replace(/-/g, ' ')
+
 interface Props {
   params: Promise<{ slug: string }>
 }
@@ -78,7 +80,7 @@ export default async function EssayPage({ params }: Props) {
 
       <div className="max-w-2xl">
         <div className="flex flex-wrap gap-2 mb-6">
-          {essay.tags.map((t) => <Tag key={t} variant="muted">{t}</Tag>)}
+          {essay.tags.map((t) => <Tag key={t} variant="muted">{cap(t)}</Tag>)}
         </div>
         <h1 className="text-2xl md:text-3xl font-light text-stone-800 dark:text-stone-100 tracking-tight leading-snug mb-4">
           {essay.title}

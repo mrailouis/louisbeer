@@ -21,7 +21,7 @@ const item = {
 
 export function HeroSection() {
   return (
-    <section className="pt-24 pb-20 md:pt-32 md:pb-28 border-b-2 border-stone-300">
+    <section className="pt-24 pb-20 md:pt-32 md:pb-28 border-b-2 border-stone-300 dark:border-stone-700">
       <motion.div
         className="max-w-3xl"
         variants={container}
@@ -30,13 +30,13 @@ export function HeroSection() {
       >
         <motion.p
           variants={item}
-          className="text-xs font-medium tracking-widest uppercase text-slate-500 mb-6"
+          className="text-xs font-medium tracking-widest uppercase text-slate-500 dark:text-stone-400 mb-6"
         >
           Louis Beer
         </motion.p>
         <motion.h1
           variants={item}
-          className="text-4xl md:text-5xl font-light text-stone-900 tracking-tight leading-tight mb-6"
+          className="text-4xl md:text-5xl font-light text-stone-900 dark:text-stone-100 tracking-tight leading-tight mb-6"
         >
           Ethical and political economy,<br />
           geopolitical systems,<br />
@@ -44,7 +44,7 @@ export function HeroSection() {
         </motion.h1>
         <motion.p
           variants={item}
-          className="text-lg text-stone-500 leading-relaxed max-w-2xl"
+          className="text-lg text-stone-500 dark:text-stone-400 leading-relaxed max-w-2xl"
         >
           Politics, Philosophy and Economics student at the University of Southampton.
           I study political, economic, and institutional systems — and build software
@@ -53,13 +53,13 @@ export function HeroSection() {
         <motion.div variants={item} className="flex flex-wrap gap-4 mt-10">
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 text-sm bg-stone-900 text-white px-5 py-2.5 hover:bg-stone-700 transition-colors duration-200"
+            className="inline-flex items-center gap-2 text-sm bg-stone-900 dark:bg-stone-100 text-white dark:text-stone-900 px-5 py-2.5 hover:bg-stone-700 dark:hover:bg-white transition-colors duration-200"
           >
             Projects <ArrowRight size={14} />
           </Link>
           <Link
             href="/about"
-            className="inline-flex items-center gap-2 text-sm text-stone-600 border border-stone-400 bg-white px-5 py-2.5 hover:border-stone-600 hover:text-stone-800 transition-colors duration-200"
+            className="inline-flex items-center gap-2 text-sm text-stone-600 dark:text-stone-300 border border-stone-400 dark:border-stone-600 bg-white dark:bg-transparent px-5 py-2.5 hover:border-stone-600 dark:hover:border-stone-400 hover:text-stone-800 dark:hover:text-stone-100 transition-colors duration-200"
           >
             About
           </Link>

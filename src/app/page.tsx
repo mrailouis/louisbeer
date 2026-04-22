@@ -8,6 +8,8 @@ import { HeroSection } from "@/components/HeroSection";
 import { ContributionGraph } from "@/components/ContributionGraph";
 import { getAllEssayMeta } from "@/lib/mdx";
 
+const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1).replace(/-/g, ' ');
+
 export default async function HomePage() {
   const [activity, calendar, allEssays] = await Promise.all([
     getGithubActivity(),
@@ -140,7 +142,7 @@ export default async function HomePage() {
             >
               <div className="flex flex-wrap gap-2 mb-4">
                 {essay.tags.slice(0, 2).map((t) => (
-                  <Tag key={t} variant="muted">{t}</Tag>
+                  <Tag key={t} variant="muted">{cap(t)}</Tag>
                 ))}
               </div>
               <h3 className="text-sm font-medium text-stone-800 dark:text-stone-100 leading-snug mb-3 group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors">

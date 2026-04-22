@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { Search } from 'lucide-react'
 import { Tag } from '@/components/ui'
-import { Document } from 'flexsearch'
 
 interface SearchItem {
   type: 'essay' | 'project'
@@ -18,24 +17,30 @@ interface Props {
   items: SearchItem[]
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type FlexDoc = any
+
 export function SearchClient({ items }: Props) {
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<SearchItem[]>([])
-  const indexRef = useRef<InstanceType<typeof Document> | null>(null)
+  const indexRef = useRef<FlexDoc>(null)
 
   useEffect(() => {
-    const index = new Document({
-      document: {
-        id: 'slug',
-        index: ['title', 'summary', 'tags'],
-        store: true,
-      },
-      tokenize: 'forward',
-    })
-    items.forEach((item) =>
-      index.add({ ...item, tags: item.tags.join(' ') })
-    )
-    indexRef.current = index
+    // Dynamically import flexsearch so it never runs during SSR/static generation
+    import('flexsearch').then(({ Document }) => {
+      const index = new Document({
+        document: {
+          id: 'slug',
+          index: ['title', 'summary', 'tags'],
+          store: true,
+        },
+        tokenize: 'forward',
+      })
+      items.forEach((item) =>
+        index.add({ ...item, tags: item.tags.join(' ') })
+      )
+      indexRef.current = index
+    }).catch(console.error)
   }, [items])
 
   useEffect(() => {
@@ -43,23 +48,28 @@ export function SearchClient({ items }: Props) {
       setResults([])
       return
     }
-    const raw = indexRef.current.search(query, { enrich: true, limit: 12 }) as unknown as Array<{ result: Array<{ doc: SearchItem }> }>
-    const seen = new Set<string>()
-    const found: SearchItem[] = []
-    if (Array.isArray(raw)) {
-      for (const field of raw) {
-        if (field?.result) {
-          for (const result of field.result) {
-            const doc = result.doc
-            if (doc && !seen.has(doc.slug)) {
-              seen.add(doc.slug)
-              found.push(doc)
+    try {
+      const raw = indexRef.current.search(query, { enrich: true, limit: 12 }) as Array<{ result: Array<{ doc: SearchItem }> }>
+      const seen = new Set<string>()
+      const found: SearchItem[] = []
+      if (Array.isArray(raw)) {
+        for (const field of raw) {
+          if (field?.result) {
+            for (const result of field.result) {
+              const doc = result.doc
+              if (doc && !seen.has(doc.slug)) {
+                seen.add(doc.slug)
+                found.push(doc)
+              }
             }
           }
         }
       }
+      setResults(found)
+    } catch (err) {
+      console.error('Search error:', err)
+      setResults([])
     }
-    setResults(found)
   }, [query])
 
   const href = (item: SearchItem) =>
@@ -114,7 +124,7 @@ export function SearchClient({ items }: Props) {
             </div>
             <div className="flex flex-wrap gap-1.5 shrink-0 md:max-w-[200px] md:justify-end">
               {item.tags.slice(0, 3).map((t) => (
-                <Tag key={t} variant="muted">{t}</Tag>
+                <Tag key={t} variant="muted">{t.charAt(0).toUpperCase() + t.slice(1).replace(/-/g, ' ')}</Tag>
               ))}
             </div>
           </Link>
