@@ -144,52 +144,62 @@ export const projects: Project[] = [
 // ─── Essays Data ──────────────────────────────────────────────────
 export const essays: Essay[] = [
   {
-    slug: 'incentives-over-intentions',
-    title: 'Why Incentives Matter More Than Intentions in Political Systems',
+    slug: 'are-there-truths-you-should-not-assert',
+    title: 'Are There Some Truths You Should Not Assert?',
     summary:
-      'Policy failures rarely stem from bad intentions. They stem from misaligned incentives operating within institutional structures that reward particular behaviours regardless of stated objectives.',
+      'Truth alone is not sufficient to license assertion. When asserting a true proposition would misrepresent one\'s epistemic position or foreseeably mislead an audience, that truth ought not to be asserted.',
     date: '2025-03-10',
-    tags: ['political-economy', 'incentives', 'institutions'],
+    tags: ['philosophy', 'epistemology', 'language'],
     featured: true,
+    readingTime: '8 min read',
+  },
+  {
+    slug: 'foot-killing-and-letting-die',
+    title: 'Does Foot Succeed in Establishing a Moral Distinction Between Killing and Letting Die?',
+    summary:
+      'Philippa Foot argues that actively initiating harm carries greater moral weight than failing to prevent it. The distinction is persuasive as an account of moral agency, but insufficient as a decisive principle.',
+    date: '2025-02-14',
+    tags: ['philosophy', 'ethics', 'moral-philosophy'],
+    featured: true,
+    readingTime: '10 min read',
+  },
+  {
+    slug: 'do-colours-exist',
+    title: 'Do Colours Exist?',
+    summary:
+      'Naïve realism, eliminativism, and dispositionalism each offer distinct answers to the metaphysical status of colour. Dispositionalism — colours as powers of objects to produce experiences — offers the most defensible account.',
+    date: '2025-01-28',
+    tags: ['philosophy', 'metaphysics', 'perception'],
+    featured: false,
     readingTime: '9 min read',
   },
   {
-    slug: 'modelling-conflict',
-    title: 'Modelling Conflict: Where Economics Meets Geopolitics',
+    slug: 'corruption-and-republican-thought',
+    title: 'Why Is the Problem of Corruption So Central to Republican Thought?',
     summary:
-      'Conflict is not irrational. It is a structured outcome of rational actors operating under information constraints, commitment problems, and bargaining failures. Understanding this reframes how we approach prevention.',
-    date: '2025-02-14',
-    tags: ['conflict', 'economics', 'geopolitics', 'modelling'],
-    featured: true,
-    readingTime: '12 min read',
-  },
-  {
-    slug: 'systems-thinking-engineering',
-    title: 'Systems Thinking as Engineering Practice',
-    summary:
-      'The same analytical vocabulary that political economists use to describe institutional behaviour maps cleanly onto software architecture. Both fields are fundamentally concerned with emergent behaviour, feedback loops, and the unintended consequences of design choices.',
-    date: '2025-01-28',
-    tags: ['systems', 'engineering', 'philosophy'],
-    featured: false,
-    readingTime: '7 min read',
-  },
-  {
-    slug: 'on-reverse-engineering',
-    title: 'On Reverse Engineering as Epistemology',
-    summary:
-      'Taking a system apart to understand how it works is not merely a technical skill. It is a mode of inquiry — one that assumes opacity, resists authority, and privileges empirical discovery over received description.',
+      'Corruption is not merely a moral problem for republicans — it is a structural one. It erodes civic virtue, enables elite capture of institutions, and thereby converts self-governance into domination.',
     date: '2024-12-05',
-    tags: ['engineering', 'philosophy', 'epistemology'],
+    tags: ['politics', 'republicanism', 'political-theory'],
     featured: false,
-    readingTime: '6 min read',
+    readingTime: '9 min read',
   },
   {
-    slug: 'the-geopolitics-of-data',
-    title: 'The Geopolitics of Data: Information as Strategic Resource',
+    slug: 'gandhi-non-violence',
+    title: "Gandhi's Argument for Non-Violence: Ethical and Pragmatic?",
     summary:
-      'Data sovereignty, platform dominance, and information asymmetry are reshaping the structural conditions of international competition. This is not a metaphor — it is a material shift in how power is accumulated and projected.',
+      'Gandhi\'s defence of non-violence is ethically coherent within his conception of freedom as self-rule, and pragmatically effective under specific conditions of imperial rule — though not universally so.',
     date: '2024-11-18',
-    tags: ['geopolitics', 'data', 'political-economy'],
+    tags: ['politics', 'ethics', 'political-philosophy'],
+    featured: false,
+    readingTime: '11 min read',
+  },
+  {
+    slug: 'allison-cuban-missile-crisis',
+    title: "Graham Allison's Three Models and the Cuban Missile Crisis",
+    summary:
+      'Of Allison\'s three models of foreign policy decision-making, the bureaucratic politics model best explains the Cuban Missile Crisis — revealing how competing actors within the US government shaped the final outcome.',
+    date: '2024-10-20',
+    tags: ['politics', 'international-relations', 'foreign-policy'],
     featured: false,
     readingTime: '10 min read',
   },
