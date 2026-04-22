@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, ExternalLink, GitBranch } from "lucide-react";
-import { projects, updates } from "@/lib/content";
+import { projects } from "@/lib/content";
 import { getGithubActivity, getContributionCalendar } from "@/lib/github";
 import { Section, SectionHeader, Tag, StatusBadge } from "@/components/ui";
 import { TechTag } from "@/components/TechTag";
@@ -18,7 +18,6 @@ export default async function HomePage() {
   ]);
   const featuredProjects = projects.filter((p) => p.featured);
   const featuredEssays = allEssays.filter((e) => e.featured).slice(0, 4);
-  const recentUpdates = updates.slice(0, 3);
   // Filter out any Copilot-generated commit messages
   const filteredActivity = activity.filter(
     (item) => !item.message?.toLowerCase().includes('copilot')
@@ -172,66 +171,35 @@ export default async function HomePage() {
           <ContributionGraph calendar={calendar} />
         </div>
 
-        <div className="grid md:grid-cols-2 gap-4">
-          {/* Commit activity */}
-          <div className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 p-6">
-            <p className="text-xs font-medium tracking-widest uppercase text-slate-500 dark:text-stone-400 mb-6">
-              GitHub Activity
-            </p>
-            <div className="space-y-4">
-              {filteredActivity.map((item, i) => (
-                <div key={i} className="flex gap-4 items-start">
-                  <GitBranch size={14} className="text-slate-400 mt-0.5 shrink-0" />
-                  <div>
-                    <p className="text-xs text-slate-500 dark:text-stone-400 font-mono mb-0.5">
-                      {item.repo.split("/")[1]}
-                    </p>
-                    {item.message && (
-                      <p className="text-sm text-stone-600 dark:text-stone-300 leading-snug">
-                        {item.message}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-            <Link
-              href="https://github.com/mrailouis"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-slate-500 dark:text-stone-400 hover:text-stone-800 dark:hover:text-white transition-colors mt-6"
-            >
-              github.com/mrailouis <ExternalLink size={12} />
-            </Link>
-          </div>
-
-          {/* Updates */}
-          <div className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 p-6">
-            <p className="text-xs font-medium tracking-widest uppercase text-slate-500 dark:text-stone-400 mb-6">
-              Recent Updates
-            </p>
-            <div className="space-y-5">
-              {recentUpdates.map((u, i) => (
-                <div key={i} className="flex gap-4">
-                  <p className="text-xs text-stone-400 font-mono pt-0.5 shrink-0 w-20">
-                    {u.date.slice(0, 7)}
+        <div className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 p-6">
+          <p className="text-xs font-medium tracking-widest uppercase text-slate-500 dark:text-stone-400 mb-6">
+            GitHub Activity
+          </p>
+          <div className="space-y-4">
+            {filteredActivity.map((item, i) => (
+              <div key={i} className="flex gap-4 items-start">
+                <GitBranch size={14} className="text-slate-400 mt-0.5 shrink-0" />
+                <div>
+                  <p className="text-xs text-slate-500 dark:text-stone-400 font-mono mb-0.5">
+                    {item.repo.split("/")[1]}
                   </p>
-                  <div>
-                    <p className="text-sm font-medium text-stone-700 dark:text-stone-200">{u.title}</p>
-                    <p className="text-sm text-stone-500 dark:text-stone-400 mt-0.5 leading-snug">
-                      {u.description}
+                  {item.message && (
+                    <p className="text-sm text-stone-600 dark:text-stone-300 leading-snug">
+                      {item.message}
                     </p>
-                  </div>
+                  )}
                 </div>
-              ))}
-            </div>
-            <Link
-              href="/updates"
-              className="inline-flex items-center gap-2 text-sm text-slate-500 dark:text-stone-400 hover:text-stone-800 dark:hover:text-white transition-colors mt-6"
-            >
-              Full changelog <ArrowRight size={14} />
-            </Link>
+              </div>
+            ))}
           </div>
+          <Link
+            href="https://github.com/mrailouis"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm text-slate-500 dark:text-stone-400 hover:text-stone-800 dark:hover:text-white transition-colors mt-6"
+          >
+            github.com/mrailouis <ExternalLink size={12} />
+          </Link>
         </div>
       </Section>
 

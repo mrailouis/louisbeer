@@ -17,11 +17,7 @@ export function Footer() {
 
         <nav className="flex flex-wrap gap-6">
           {[
-            { href: '/about', label: 'About' },
-            { href: '/projects', label: 'Projects' },
-            { href: '/writing', label: 'Writing' },
             { href: '/aspirations', label: 'Aspirations' },
-            { href: '/updates', label: 'Updates' },
             { href: '/photography', label: 'Photography' },
           ].map(({ href, label }) => (
             <Link
