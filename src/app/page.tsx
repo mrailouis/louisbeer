@@ -1,15 +1,21 @@
 import Link from "next/link";
 import { ArrowRight, ExternalLink, GitBranch } from "lucide-react";
-import { projects, essays, updates } from "@/lib/content";
-import { getGithubActivity } from "@/lib/github";
+import { projects, updates } from "@/lib/content";
+import { getGithubActivity, getContributionCalendar } from "@/lib/github";
 import { Section, SectionHeader, Tag, StatusBadge } from "@/components/ui";
 import { TechTag } from "@/components/TechTag";
 import { HeroSection } from "@/components/HeroSection";
+import { ContributionGraph } from "@/components/ContributionGraph";
+import { getAllEssayMeta } from "@/lib/mdx";
 
 export default async function HomePage() {
-  const activity = await getGithubActivity();
+  const [activity, calendar, allEssays] = await Promise.all([
+    getGithubActivity(),
+    getContributionCalendar(),
+    getAllEssayMeta(),
+  ]);
   const featuredProjects = projects.filter((p) => p.featured);
-  const featuredEssays = essays.filter((e) => e.featured);
+  const featuredEssays = allEssays.filter((e) => e.featured).slice(0, 4);
   const recentUpdates = updates.slice(0, 3);
 
   return (
@@ -157,8 +163,13 @@ export default async function HomePage() {
 
       {/* ─── GitHub Activity ──────────────────────────────────── */}
       <Section className="border-t-2 border-stone-300">
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Activity */}
+        {/* Contribution heatmap */}
+        <div className="bg-white border border-stone-200 p-6 mb-4">
+          <ContributionGraph calendar={calendar} />
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-4">
+          {/* Commit activity */}
           <div className="bg-white border border-stone-200 p-6">
             <p className="text-xs font-medium tracking-widest uppercase text-slate-500 mb-6">
               GitHub Activity

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { essays } from '@/lib/content'
+import { getAllEssayMeta } from '@/lib/mdx'
 import { Section, SectionHeader, Tag } from '@/components/ui'
 
 export const metadata: Metadata = {
@@ -8,7 +8,8 @@ export const metadata: Metadata = {
   description: 'Analytical essays and notes on geopolitics, political economy, systems thinking, and the theory behind the engineering.',
 }
 
-export default function WritingPage() {
+export default async function WritingPage() {
+  const essays = await getAllEssayMeta()
   const featured = essays.filter((e) => e.featured)
   const rest = essays.filter((e) => !e.featured)
 

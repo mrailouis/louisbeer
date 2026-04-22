@@ -4,7 +4,8 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/cn'
 import { useState } from 'react'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Search } from 'lucide-react'
+import { ThemeToggle } from './ThemeToggle'
 
 const navLinks = [
   { href: '/about', label: 'About' },
@@ -51,14 +52,34 @@ export function Nav() {
           ))}
         </ul>
 
+        <div className="hidden md:flex items-center gap-1">
+          <Link
+            href="/search"
+            aria-label="Search"
+            className={cn(
+              'text-stone-400 hover:text-white transition-colors p-1.5 rounded',
+              pathname === '/search' && 'text-white bg-stone-700'
+            )}
+          >
+            <Search size={16} />
+          </Link>
+          <ThemeToggle />
+        </div>
+
         {/* Mobile toggle */}
-        <button
-          className="md:hidden text-stone-400 hover:text-white transition-colors"
-          onClick={() => setOpen((o) => !o)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        <div className="md:hidden flex items-center gap-2">
+          <Link href="/search" aria-label="Search" className="text-stone-400 hover:text-white transition-colors p-1.5">
+            <Search size={16} />
+          </Link>
+          <ThemeToggle />
+          <button
+            className="text-stone-400 hover:text-white transition-colors"
+            onClick={() => setOpen((o) => !o)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile menu */}
@@ -87,3 +108,5 @@ export function Nav() {
     </header>
   )
 }
+
+

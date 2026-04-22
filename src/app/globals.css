@@ -17,11 +17,19 @@
   }
 
   body {
-    @apply bg-stone-200 text-stone-800;
+    @apply bg-stone-200 text-stone-800 transition-colors duration-200;
+  }
+
+  .dark body {
+    @apply bg-stone-950 text-stone-100;
   }
 
   ::selection {
     @apply bg-slate-800 text-stone-50;
+  }
+
+  .dark ::selection {
+    @apply bg-stone-200 text-stone-900;
   }
 
   :focus-visible {
