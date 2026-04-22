@@ -34,7 +34,11 @@ export default function SystemsPage() {
               </div>
               <p className="text-sm text-stone-500 dark:text-stone-400 leading-relaxed mb-4">{system.description}</p>
               <div className="flex flex-wrap gap-2">
-                {system.tags.map((t) => <Tag key={t} variant="muted">{t}</Tag>)}
+                {system.tags.map((t) => (
+                  <Tag key={t} variant="muted">
+                    {t.charAt(0).toUpperCase() + t.slice(1).replace(/-/g, ' ')}
+                  </Tag>
+                ))}
               </div>
             </div>
           ))}

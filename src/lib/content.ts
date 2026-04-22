@@ -56,7 +56,7 @@ export type ReadingItem = z.infer<typeof ReadingItemSchema>
 export const SystemSchema = z.object({
   title: z.string(),
   description: z.string(),
-  status: z.enum(['active', 'prototype', 'conceptual', 'paused']),
+  status: z.enum(['active', 'prototype', 'conceptual', 'paused', 'archived']),
   tags: z.array(z.string()),
 })
 
@@ -348,14 +348,14 @@ export const systems: System[] = [
     title: 'Bazaar Market Regime Detector',
     description:
       'A time-series analysis routine that classifies Hypixel Skyblock bazaar items into market regime states — trending, mean-reverting, illiquid, manipulated — and triggers alerts when regime transitions are detected.',
-    status: 'active',
+    status: 'archived',
     tags: ['economics', 'market-systems', 'signal-processing'],
   },
   {
     title: 'LarpClient Rendering Pipeline',
     description:
       'A GLSL shader-driven GUI system embedded within a Minecraft mod client. The pipeline manages layer composition, transform hierarchies, and event routing for a fully custom in-game interface — bypassing the standard Minecraft GUI entirely.',
-    status: 'active',
+    status: 'archived',
     tags: ['rendering', 'systems', 'glsl'],
   },
 ]
