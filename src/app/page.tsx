@@ -17,6 +17,10 @@ export default async function HomePage() {
   const featuredProjects = projects.filter((p) => p.featured);
   const featuredEssays = allEssays.filter((e) => e.featured).slice(0, 4);
   const recentUpdates = updates.slice(0, 3);
+  // Filter out any Copilot-generated commit messages
+  const filteredActivity = activity.filter(
+    (item) => !item.message?.toLowerCase().includes('copilot')
+  );
 
   return (
     <div className="max-w-6xl mx-auto px-6">
@@ -24,24 +28,24 @@ export default async function HomePage() {
       <HeroSection />
 
       {/* ─── Intro ────────────────────────────────────────────── */}
-      <Section className="bg-white rounded-lg mt-8 px-8 shadow-sm">
+      <Section className="bg-white dark:bg-stone-900 rounded-lg mt-8 px-8 shadow-sm border border-stone-200 dark:border-stone-700">
         <div className="grid md:grid-cols-3 gap-12">
           <div className="md:col-span-2">
-            <p className="text-xs font-medium tracking-widest uppercase text-slate-500 mb-6">
+            <p className="text-xs font-medium tracking-widest uppercase text-slate-500 dark:text-stone-400 mb-6">
               Orientation
             </p>
-            <p className="text-stone-600 leading-relaxed mb-4">
+            <p className="text-stone-600 dark:text-stone-300 leading-relaxed mb-4">
               I believe that philosophy, politics, and economics are not three separate subjects.
               They are analytical lenses on the same underlying problem: how do rational and
               semi-rational actors behave within structured systems, and what emerges from that
               behaviour at scale?
             </p>
-            <p className="text-stone-600 leading-relaxed mb-4">
+            <p className="text-stone-600 dark:text-stone-300 leading-relaxed mb-4">
               Software engineering, for me, began as a hobby — but as I developed it became
               a natural extension of that inquiry. A system described is a system only partially
               understood. A system implemented is a system tested against reality.
             </p>
-            <p className="text-stone-600 leading-relaxed">
+            <p className="text-stone-600 dark:text-stone-300 leading-relaxed">
               My work sits at this intersection — from modelling geopolitical risk to reverse
               engineering complex software systems, from writing analytically about institutions
               to building the tools to analyse them directly.
@@ -49,10 +53,10 @@ export default async function HomePage() {
           </div>
           <div className="space-y-6">
             <div>
-              <p className="text-xs font-medium tracking-widest uppercase text-slate-500 mb-3">
+              <p className="text-xs font-medium tracking-widest uppercase text-slate-500 dark:text-stone-400 mb-3">
                 Current focus
               </p>
-              <ul className="space-y-2 text-sm text-stone-600">
+              <ul className="space-y-2 text-sm text-stone-600 dark:text-stone-300">
                 <li className="flex gap-2">
                   <span className="text-slate-400 mt-0.5">—</span>
                   Overall stability index
@@ -68,17 +72,17 @@ export default async function HomePage() {
               </ul>
             </div>
             <div>
-              <p className="text-xs font-medium tracking-widest uppercase text-slate-500 mb-3">
+              <p className="text-xs font-medium tracking-widest uppercase text-slate-500 dark:text-stone-400 mb-3">
                 Based
               </p>
-              <p className="text-sm text-stone-600">Southampton, UK</p>
+              <p className="text-sm text-stone-600 dark:text-stone-300">Southampton, UK</p>
             </div>
           </div>
         </div>
       </Section>
 
       {/* ─── Featured Projects ────────────────────────────────── */}
-      <Section className="border-t-2 border-stone-300 mt-4">
+      <Section className="border-t-2 border-stone-300 dark:border-stone-700 mt-4">
         <SectionHeader
           label="Selected Work"
           title="Projects"
@@ -89,16 +93,16 @@ export default async function HomePage() {
             <Link
               key={project.slug}
               href={`/projects/${project.slug}`}
-              className="group flex flex-col md:flex-row md:items-center justify-between gap-4 py-5 px-5 bg-white border border-stone-200 hover:border-slate-400 hover:shadow-sm transition-all"
+              className="group flex flex-col md:flex-row md:items-center justify-between gap-4 py-5 px-5 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 hover:border-slate-400 dark:hover:border-stone-500 hover:shadow-sm transition-all"
             >
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
-                  <h3 className="text-sm font-medium text-stone-800 group-hover:text-slate-700 transition-colors">
+                  <h3 className="text-sm font-medium text-stone-800 dark:text-stone-100 group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors">
                     {project.title}
                   </h3>
                   <StatusBadge status={project.status} />
                 </div>
-                <p className="text-sm text-stone-500 leading-relaxed max-w-xl">
+                <p className="text-sm text-stone-500 dark:text-stone-400 leading-relaxed max-w-xl">
                   {project.summary.split(".")[0]}.
                 </p>
               </div>
@@ -113,7 +117,7 @@ export default async function HomePage() {
         <div className="mt-8">
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 text-sm text-slate-600 hover:text-stone-900 transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400 hover:text-stone-900 dark:hover:text-white transition-colors"
           >
             All projects <ArrowRight size={14} />
           </Link>
@@ -121,7 +125,7 @@ export default async function HomePage() {
       </Section>
 
       {/* ─── Writing Preview ──────────────────────────────────── */}
-      <Section className="border-t-2 border-stone-300">
+      <Section className="border-t-2 border-stone-300 dark:border-stone-700">
         <SectionHeader
           label="Writing"
           title="Recent Essays"
@@ -132,19 +136,17 @@ export default async function HomePage() {
             <Link
               key={essay.slug}
               href={`/writing/${essay.slug}`}
-              className="group bg-white border border-stone-200 p-6 hover:border-slate-400 hover:shadow-sm transition-all"
+              className="group bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 p-6 hover:border-slate-400 dark:hover:border-stone-500 hover:shadow-sm transition-all"
             >
               <div className="flex flex-wrap gap-2 mb-4">
                 {essay.tags.slice(0, 2).map((t) => (
-                  <Tag key={t} variant="muted">
-                    {t}
-                  </Tag>
+                  <Tag key={t} variant="muted">{t}</Tag>
                 ))}
               </div>
-              <h3 className="text-sm font-medium text-stone-800 leading-snug mb-3 group-hover:text-slate-700 transition-colors">
+              <h3 className="text-sm font-medium text-stone-800 dark:text-stone-100 leading-snug mb-3 group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors">
                 {essay.title}
               </h3>
-              <p className="text-sm text-stone-500 leading-relaxed line-clamp-3">
+              <p className="text-sm text-stone-500 dark:text-stone-400 leading-relaxed line-clamp-3">
                 {essay.summary}
               </p>
               <p className="text-xs text-stone-400 mt-4">{essay.readingTime}</p>
@@ -154,7 +156,7 @@ export default async function HomePage() {
         <div className="mt-8">
           <Link
             href="/writing"
-            className="inline-flex items-center gap-2 text-sm text-slate-600 hover:text-stone-900 transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400 hover:text-stone-900 dark:hover:text-white transition-colors"
           >
             All writing <ArrowRight size={14} />
           </Link>
@@ -162,28 +164,28 @@ export default async function HomePage() {
       </Section>
 
       {/* ─── GitHub Activity ──────────────────────────────────── */}
-      <Section className="border-t-2 border-stone-300">
+      <Section className="border-t-2 border-stone-300 dark:border-stone-700">
         {/* Contribution heatmap */}
-        <div className="bg-white border border-stone-200 p-6 mb-4">
+        <div className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 p-6 mb-4">
           <ContributionGraph calendar={calendar} />
         </div>
 
         <div className="grid md:grid-cols-2 gap-4">
           {/* Commit activity */}
-          <div className="bg-white border border-stone-200 p-6">
-            <p className="text-xs font-medium tracking-widest uppercase text-slate-500 mb-6">
+          <div className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 p-6">
+            <p className="text-xs font-medium tracking-widest uppercase text-slate-500 dark:text-stone-400 mb-6">
               GitHub Activity
             </p>
             <div className="space-y-4">
-              {activity.map((item, i) => (
+              {filteredActivity.map((item, i) => (
                 <div key={i} className="flex gap-4 items-start">
                   <GitBranch size={14} className="text-slate-400 mt-0.5 shrink-0" />
                   <div>
-                    <p className="text-xs text-slate-500 font-mono mb-0.5">
+                    <p className="text-xs text-slate-500 dark:text-stone-400 font-mono mb-0.5">
                       {item.repo.split("/")[1]}
                     </p>
                     {item.message && (
-                      <p className="text-sm text-stone-600 leading-snug">
+                      <p className="text-sm text-stone-600 dark:text-stone-300 leading-snug">
                         {item.message}
                       </p>
                     )}
@@ -195,15 +197,15 @@ export default async function HomePage() {
               href="https://github.com/mrailouis"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-stone-800 transition-colors mt-6"
+              className="inline-flex items-center gap-2 text-sm text-slate-500 dark:text-stone-400 hover:text-stone-800 dark:hover:text-white transition-colors mt-6"
             >
               github.com/mrailouis <ExternalLink size={12} />
             </Link>
           </div>
 
           {/* Updates */}
-          <div className="bg-white border border-stone-200 p-6">
-            <p className="text-xs font-medium tracking-widest uppercase text-slate-500 mb-6">
+          <div className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 p-6">
+            <p className="text-xs font-medium tracking-widest uppercase text-slate-500 dark:text-stone-400 mb-6">
               Recent Updates
             </p>
             <div className="space-y-5">
@@ -213,8 +215,8 @@ export default async function HomePage() {
                     {u.date.slice(0, 7)}
                   </p>
                   <div>
-                    <p className="text-sm font-medium text-stone-700">{u.title}</p>
-                    <p className="text-sm text-stone-500 mt-0.5 leading-snug">
+                    <p className="text-sm font-medium text-stone-700 dark:text-stone-200">{u.title}</p>
+                    <p className="text-sm text-stone-500 dark:text-stone-400 mt-0.5 leading-snug">
                       {u.description}
                     </p>
                   </div>
@@ -223,7 +225,7 @@ export default async function HomePage() {
             </div>
             <Link
               href="/updates"
-              className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-stone-800 transition-colors mt-6"
+              className="inline-flex items-center gap-2 text-sm text-slate-500 dark:text-stone-400 hover:text-stone-800 dark:hover:text-white transition-colors mt-6"
             >
               Full changelog <ArrowRight size={14} />
             </Link>
@@ -232,7 +234,7 @@ export default async function HomePage() {
       </Section>
 
       {/* ─── Navigation Strip ─────────────────────────────────── */}
-      <Section className="border-t-2 border-stone-300">
+      <Section className="border-t-2 border-stone-300 dark:border-stone-700">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {[
             { href: "/systems", label: "Systems", desc: "Active models and prototypes" },
@@ -243,16 +245,15 @@ export default async function HomePage() {
             <Link
               key={href}
               href={href}
-              className="group bg-white border border-stone-200 p-5 hover:border-slate-400 hover:shadow-sm transition-all"
+              className="group bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 p-5 hover:border-slate-400 dark:hover:border-stone-500 hover:shadow-sm transition-all"
             >
-              <p className="text-sm font-medium text-stone-800 mb-1 group-hover:text-slate-700 transition-colors">
+              <p className="text-sm font-medium text-stone-800 dark:text-stone-100 mb-1 group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors">
                 {label}
               </p>
-              <p className="text-xs text-stone-400">{desc}</p>
+              <p className="text-xs text-stone-400 dark:text-stone-500">{desc}</p>
             </Link>
           ))}
         </div>
-
       </Section>
     </div>
   );

@@ -31,8 +31,8 @@ export function TechTag({ name, variant = 'default', className }: TechTagProps) 
         className={cn(
           'inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded border font-mono',
           variant === 'muted'
-            ? 'text-stone-500 border-stone-300 bg-white'
-            : 'text-slate-700 border-slate-300 bg-slate-50',
+            ? 'text-stone-500 dark:text-stone-400 border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800'
+            : 'text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-800/60',
           className
         )}
       >

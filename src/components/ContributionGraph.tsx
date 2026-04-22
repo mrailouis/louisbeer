@@ -4,11 +4,11 @@ import { ContributionCalendar } from '@/lib/github'
 import { cn } from '@/lib/cn'
 
 const levelClasses: Record<number, string> = {
-  0: 'bg-stone-100',
-  1: 'bg-emerald-200',
-  2: 'bg-emerald-400',
-  3: 'bg-emerald-600',
-  4: 'bg-emerald-800',
+  0: 'bg-stone-200 dark:bg-stone-700',
+  1: 'bg-emerald-200 dark:bg-emerald-900',
+  2: 'bg-emerald-400 dark:bg-emerald-700',
+  3: 'bg-emerald-600 dark:bg-emerald-500',
+  4: 'bg-emerald-800 dark:bg-emerald-400',
 }
 
 const DAYS = ['Mon', '', 'Wed', '', 'Fri', '', '']
@@ -23,10 +23,10 @@ export function ContributionGraph({ calendar }: Props) {
   return (
     <div>
       <div className="flex items-center justify-between mb-4">
-        <p className="text-xs font-medium tracking-widest uppercase text-stone-400">
+        <p className="text-xs font-medium tracking-widest uppercase text-stone-400 dark:text-stone-500">
           Contribution activity
         </p>
-        <p className="text-xs text-stone-400 font-mono">
+        <p className="text-xs text-stone-400 dark:text-stone-500 font-mono">
           {calendar.totalContributions.toLocaleString()} contributions in the last year
         </p>
       </div>
@@ -38,7 +38,7 @@ export function ContributionGraph({ calendar }: Props) {
             {months.map((label, i) => (
               <div
                 key={i}
-                className="text-[10px] text-stone-400 font-mono"
+                className="text-[10px] text-stone-400 dark:text-stone-500 font-mono"
                 style={{ width: label.width * 11 + (label.width - 1) * 3 }}
               >
                 {label.name}
@@ -50,7 +50,7 @@ export function ContributionGraph({ calendar }: Props) {
             {/* Day labels */}
             <div className="flex flex-col gap-[3px] mr-1">
               {DAYS.map((day, i) => (
-                <div key={i} className="h-[10px] w-7 text-[9px] text-stone-400 font-mono leading-[10px]">
+                <div key={i} className="h-[10px] w-7 text-[9px] text-stone-400 dark:text-stone-500 font-mono leading-[10px]">
                   {day}
                 </div>
               ))}
@@ -75,14 +75,14 @@ export function ContributionGraph({ calendar }: Props) {
 
           {/* Legend */}
           <div className="flex items-center gap-2 mt-3 justify-end">
-            <span className="text-[10px] text-stone-400">Less</span>
+            <span className="text-[10px] text-stone-400 dark:text-stone-500">Less</span>
             {[0, 1, 2, 3, 4].map((level) => (
               <div
                 key={level}
                 className={cn('w-[10px] h-[10px] rounded-[2px]', levelClasses[level])}
               />
             ))}
-            <span className="text-[10px] text-stone-400">More</span>
+            <span className="text-[10px] text-stone-400 dark:text-stone-500">More</span>
           </div>
         </div>
       </div>
@@ -94,7 +94,7 @@ export function ContributionGraph({ calendar }: Props) {
 
 interface MonthLabel {
   name: string
-  width: number // in weeks
+  width: number
 }
 
 function getMonthLabels(weeks: ContributionCalendar['weeks']): MonthLabel[] {
@@ -122,4 +122,3 @@ function getMonthLabels(weeks: ContributionCalendar['weeks']): MonthLabel[] {
   if (currentLabel) labels.push(currentLabel)
   return labels
 }
-

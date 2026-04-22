@@ -24,13 +24,13 @@ export function SectionHeader({ label, title, description }: SectionHeaderProps)
   return (
     <div className="mb-10">
       {label && (
-        <p className="text-xs font-medium tracking-widest uppercase text-slate-500 mb-3">
+        <p className="text-xs font-medium tracking-widest uppercase text-slate-500 dark:text-stone-400 mb-3">
           {label}
         </p>
       )}
-      <h2 className="text-2xl font-light text-stone-800 tracking-tight">{title}</h2>
+      <h2 className="text-2xl font-light text-stone-800 dark:text-stone-100 tracking-tight">{title}</h2>
       {description && (
-        <p className="mt-3 text-stone-500 max-w-2xl leading-relaxed">{description}</p>
+        <p className="mt-3 text-stone-500 dark:text-stone-400 max-w-2xl leading-relaxed">{description}</p>
       )}
     </div>
   )
@@ -47,8 +47,8 @@ export function Tag({ children, variant = 'default' }: TagProps) {
       className={cn(
         'inline-block text-xs px-2.5 py-1 rounded border font-mono',
         variant === 'muted'
-          ? 'text-stone-500 border-stone-300 bg-white'
-          : 'text-slate-700 border-slate-300 bg-slate-50'
+          ? 'text-stone-500 dark:text-stone-400 border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800'
+          : 'text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-800/60'
       )}
     >
       {children}
@@ -61,16 +61,16 @@ interface StatusBadgeProps {
 }
 
 const statusStyles: Record<string, string> = {
-  active: 'text-emerald-700 bg-emerald-50 border-emerald-300',
-  live: 'text-emerald-700 bg-emerald-50 border-emerald-300',
-  prototype: 'text-amber-700 bg-amber-50 border-amber-300',
-  concept: 'text-slate-600 bg-slate-100 border-slate-300',
-  archived: 'text-amber-700 bg-amber-50 border-amber-300',
-  paused: 'text-amber-700 bg-amber-50 border-amber-300',
-  reading: 'text-blue-700 bg-blue-50 border-blue-300',
-  read: 'text-stone-500 bg-stone-100 border-stone-300',
-  reference: 'text-violet-700 bg-violet-50 border-violet-300',
-  conceptual: 'text-stone-500 bg-stone-100 border-stone-300',
+  active: 'text-emerald-700 bg-emerald-50 border-emerald-300 dark:text-emerald-400 dark:bg-emerald-900/20 dark:border-emerald-700',
+  live: 'text-emerald-700 bg-emerald-50 border-emerald-300 dark:text-emerald-400 dark:bg-emerald-900/20 dark:border-emerald-700',
+  prototype: 'text-amber-700 bg-amber-50 border-amber-300 dark:text-amber-400 dark:bg-amber-900/20 dark:border-amber-700',
+  concept: 'text-slate-600 bg-slate-100 border-slate-300 dark:text-slate-400 dark:bg-slate-800 dark:border-slate-600',
+  archived: 'text-amber-700 bg-amber-50 border-amber-300 dark:text-amber-400 dark:bg-amber-900/20 dark:border-amber-700',
+  paused: 'text-amber-700 bg-amber-50 border-amber-300 dark:text-amber-400 dark:bg-amber-900/20 dark:border-amber-700',
+  reading: 'text-blue-700 bg-blue-50 border-blue-300 dark:text-blue-400 dark:bg-blue-900/20 dark:border-blue-700',
+  read: 'text-stone-500 bg-stone-100 border-stone-300 dark:text-stone-400 dark:bg-stone-800 dark:border-stone-600',
+  reference: 'text-violet-700 bg-violet-50 border-violet-300 dark:text-violet-400 dark:bg-violet-900/20 dark:border-violet-700',
+  conceptual: 'text-stone-500 bg-stone-100 border-stone-300 dark:text-stone-400 dark:bg-stone-800 dark:border-stone-600',
 }
 
 export function StatusBadge({ status }: StatusBadgeProps) {
@@ -78,7 +78,7 @@ export function StatusBadge({ status }: StatusBadgeProps) {
     <span
       className={cn(
         'inline-block text-xs px-2.5 py-1 rounded border capitalize',
-        statusStyles[status] ?? 'text-stone-500 border-stone-300'
+        statusStyles[status] ?? 'text-stone-500 border-stone-300 dark:text-stone-400 dark:border-stone-600'
       )}
     >
       {status}
@@ -87,7 +87,7 @@ export function StatusBadge({ status }: StatusBadgeProps) {
 }
 
 export function Divider() {
-  return <hr className="border-stone-300 my-12" />
+  return <hr className="border-stone-300 dark:border-stone-700 my-12" />
 }
 
 interface CalloutProps {
@@ -99,7 +99,7 @@ export function Callout({ children, className }: CalloutProps) {
   return (
     <blockquote
       className={cn(
-        'border-l-2 border-slate-700 pl-6 my-8 text-stone-600 italic leading-relaxed bg-white py-4 pr-4 rounded-r',
+        'border-l-2 border-slate-700 pl-6 my-8 text-stone-600 dark:text-stone-400 italic leading-relaxed bg-white dark:bg-stone-800 py-4 pr-4 rounded-r',
         className
       )}
     >
