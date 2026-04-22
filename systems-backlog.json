@@ -1,0 +1,15 @@
+[
+  {
+    "title": "Institutional Incentive Mapper",
+    "description": "A typed modelling framework for representing the incentive structures of political and economic institutions. Given a set of actors, rules, and payoff conditions, the system outputs likely equilibrium behaviours and identifies structural points of instability.",
+    "status": "prototype",
+    "tags": ["systems", "institutions", "modelling"]
+  },
+  {
+    "title": "Conflict Precondition Classifier",
+    "description": "An ML pipeline trained on ACLED and UCDP conflict datasets to identify structural similarities between current geopolitical conditions and historical precursors to large-scale escalation. Not a predictive oracle — a structured similarity search.",
+    "status": "prototype",
+    "tags": ["conflict", "pattern-detection", "ml"]
+  }
+]
+
