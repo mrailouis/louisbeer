@@ -209,8 +209,8 @@ export default async function HomePage() {
           {[
             { href: "/systems", label: "Systems", desc: "Active models and prototypes" },
             { href: "/aspirations", label: "Aspirations", desc: "Long-term direction" },
-            { href: "/photography", label: "Photography", desc: "Visual observation" },
             { href: "/now", label: "Now", desc: "What I'm currently working on" },
+            { href: "/contact", label: "Contact", desc: "Get in touch" },
           ].map(({ href, label, desc }) => (
             <Link
               key={href}
