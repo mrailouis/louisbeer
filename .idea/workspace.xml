@@ -5,26 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0eda713-fadf-40ab-888f-d2dde1feac97" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom-worker.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/open-next.config.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/about/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/aspirations/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/contact/ContactForm.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/contact/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/now/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/photography/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/projects/[slug]/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/projects/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/reading/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/search/SearchClient.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/search/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/systems/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/writing/[slug]/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/writing/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/typing/TypingTest.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/typing/layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/typing/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wrangler.jsonc" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +120,7 @@
       <workItem from="1776886726368" duration="2416000" />
       <workItem from="1777671035580" duration="155000" />
       <workItem from="1777737296929" duration="78000" />
-      <workItem from="1777737419053" duration="1426000" />
+      <workItem from="1777737419053" duration="2698000" />
     </task>
     <servers />
   </component>
