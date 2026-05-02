@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Lora } from "next/font/google";
 import "./globals.css";
-import { Nav } from "@/components/Nav";
-import { Footer } from "@/components/Footer";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 const inter = Inter({
@@ -64,9 +62,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen flex flex-col font-sans antialiased bg-stone-200 dark:bg-stone-950 text-stone-800 dark:text-stone-100 transition-colors duration-200">
         <ThemeProvider>
-          <Nav />
-          <main className="flex-1 pt-14">{children}</main>
-          <Footer />
+          {children}
         </ThemeProvider>
       </body>
     </html>
